@@ -1,14 +1,16 @@
-# Install Autopsy and Analyze the Disk File and Folder Configuration
+# FILE-RECOVERY-USING-AUTOPSY-SOFTWARE
 
 ## AIM
-To install **Autopsy** and use it to analyze the disk’s file and folder configuration for forensic investigation.
+To use **Autopsy Digital Forensics Tool** to retrieve deleted files from a disk image.
+
+---
 
 ## REQUIREMENTS
 - **Operating System**: Windows 10/11, macOS, or Linux
-- **Tools**:  
-  - [Autopsy Digital Forensics Platform](https://www.autopsy.com/)  
-  - Optional: Sleuth Kit CLI tools for deeper analysis
-- **Test Data**: Disk image file (`.dd`, `.img`, `.E01`)
+- **Tool**: [Autopsy Digital Forensics](https://www.autopsy.com/)  
+- **Test Data**: Disk image file (`disk.dd`, `disk.img`, `.E01`)
+
+---
 
 ## ARCHITECTURE DIAGRAM
 ```mermaid
@@ -16,61 +18,84 @@ flowchart TD
     A[Disk Image / Physical Drive] --> B[Install Autopsy]
     B --> C[Create New Case in Autopsy]
     C --> D[Add Data Source: Disk Image]
-    D --> E["Autopsy Modules Run: File System, Metadata, Keywords"]
-    E --> F[File & Folder Structure View]
-    F --> G[Export / Recover Files]
+    D --> E["Run File System & Data Recovery Modules"]
+    E --> F[Locate Deleted Files in Results]
+    F --> G[Recover and Export Deleted Files]
 ```
 ## DESIGN STEPS:
 ### Step 1:
-Download Autopsy from the official website and install it on your system.
+Open Autopsy and create a new case with appropriate case details.
 
 ### Step 2:
-Launch Autopsy and create a new case.
+Add a disk image as a data source and let Autopsy analyze the content.
 
 ### Step 3:
-Add your disk image or physical drive as the data source.
+Navigate to the "Deleted Files" section in Autopsy and examine or recover the deleted files.
 
-### Step 4:
-Allow Autopsy to run its built-in ingest modules (file system analysis, hash lookup, keyword search, metadata extraction).
-
-### Step 5:
-View the file and folder hierarchy in the left-hand tree panel.
-
-### Step 6:
-Export or recover files if required for the investigation.
-
-## PROGRAM(Windows)
-
-1. Download Autopsy from autopsy.com.
-2. Install and launch the application.
-3. Select **New Case → Name your case → Choose case folder**.
-4. Click Add **Data Source → Select Disk Image → Browse to file**.
-5. Choose ingest modules (file system, metadata, hash lookup, keyword search).
-6. Wait for processing to finish.
-7. Explore file/folder structure in the navigation pane.
-8.Export selected files for further examination.
+## PROGRAM:
+### Install Autopsy
+```bash
+# Download Autopsy from:
+# https://www.autopsy.com/
+# Install following the setup wizard.
+```
+### Create a New Case
+```
+# File → New Case
+# Enter Case Name: Deleted_File_Recovery
+# Choose Base Directory: C:\Cases\Deleted_File_Recovery
+# Click Finish
+```
+### Add Disk Image
+```
+# Add Data Source → Disk Image or VM File
+# Browse to: C:\forensics\disk.dd
+# Click Next
+```
+### Run Ingest Modules
+```# Select:
+# - File System Analysis
+# - Keyword Search (optional)
+# - Data Recovery / Carving
+# Click Finish
+```
+### Locate Deleted Files
+```
+# Navigate to 'Deleted Files' section in the tree view
+# Review metadata (size, hash, timestamps)
+```
+### Export Deleted Files
+```
+# Right-click → Extract File(s)
+# Save to: C:\forensics\Recovered_Files\
+```
 
 ## OUTPUT:
-File and Folder Configuration Analysis Results
-
-![a3](https://github.com/user-attachments/assets/d5acae00-66e8-4da8-ac12-9eb6e977fe13)
-
-![a4](https://github.com/user-attachments/assets/727e0bcb-15f8-45ea-9da3-c3b575111b71)
-
-<img width="1048" height="675" alt="Screenshot 2025-08-29 092436" src="https://github.com/user-attachments/assets/2e9a433a-e2e8-44c9-ad12-7618275e26aa" />
-
-![a6](https://github.com/user-attachments/assets/8407ea2d-9e92-4291-910b-f790b70270a9)
-
-![Screenshot 2025-03-28 093408](https://github.com/user-attachments/assets/512e434e-45d1-41f2-ad37-9cf2908465e3)
-
-![Screenshot 2025-03-28 094853](https://github.com/user-attachments/assets/1c30d0f9-174f-4ab4-b45e-03c246aa8486)
+Recovered Deleted File List and Details
+<img width="1920" height="1080" alt="Screenshot 2025-08-29 091734" src="https://github.com/user-attachments/assets/1479d651-c440-4470-8c40-ca62e7a2f17b" />
+<img width="1920" height="1080" alt="Screenshot 2025-09-04 120250" src="https://github.com/user-attachments/assets/46d32875-6dda-4b7d-b894-a44bf028aefa" />
+<img width="1920" height="1080" alt="Screenshot 2025-09-04 120618" src="https://github.com/user-attachments/assets/7b2ebc72-be69-4d49-a469-eb450094100c" />
 
 
-![Screenshot 2025-03-28 094903](https://github.com/user-attachments/assets/995557a3-6014-42c1-a15d-0ad1c2c5b795)
+<img width="1920" height="1080" alt="Screenshot 2025-08-29 092438" src="https://github.com/user-attachments/assets/2bba11ed-c7bc-4b9b-b9d6-14ffca4aba26" />
+<img width="1920" height="1080" alt="Screenshot 2025-09-04 120720" src="https://github.com/user-attachments/assets/cbdfcbc9-2b96-42a5-a870-74f6817f3518" />
+
+<img width="1920" height="1080" alt="Screenshot 2025-08-29 093320" src="https://github.com/user-attachments/assets/fcc88f87-c6ef-496f-9bc1-9987a1b45f81" />
+<img width="919" height="670" alt="Screenshot 2025-08-29 093522" src="https://github.com/user-attachments/assets/56b6e4da-4208-4258-b92a-b4ff711d7ad0" />
+
+<img width="1920" height="1080" alt="Screenshot 2025-08-29 093652" src="https://github.com/user-attachments/assets/3ff6928c-e08f-428f-a499-741e0ecd1d77" />
+<img width="1920" height="1080" alt="Screenshot 2025-08-29 093712" src="https://github.com/user-attachments/assets/898b3375-c4a8-4fd3-aa8b-071e85ba9d8b" />
+<img width="1920" height="1080" alt="Screenshot 2025-08-29 093722" src="https://github.com/user-attachments/assets/c9eca91d-8ee4-441f-b3e7-84ecf4173fb7" />
 
 
-![Screenshot 2025-03-28 103946](https://github.com/user-attachments/assets/10054efb-eb5a-47ad-bea5-bd29e88ee06d)
 
-# RESULT:
+
+
+
+
+
+
+
+
+## RESULT:
 Deleted files were successfully retrieved and analyzed using Autopsy.
-
